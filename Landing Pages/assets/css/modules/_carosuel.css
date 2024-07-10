@@ -1,4 +1,4 @@
-.testimonial-carousel-container {
+.carousel-container {
     background-color: #f1fee0;
     display: flex;
     flex-direction: column;
@@ -8,7 +8,7 @@
     padding: 50px 200px;
 }
 
-.testimonial-heading {
+.carousel-heading {
     font-weight: 700;
     font-size: 30px;
     color: #2e7d32;
@@ -16,13 +16,12 @@
     padding: 0;
 }
 
-.testimonial-carousel {
+.carousel {
     position: relative;
     width: 100%;
     overflow: hidden;
     padding: 20px;
     display: flex;
-    /* Add this line */
 }
 
 .carousel-item {
@@ -30,8 +29,6 @@
     transition: transform 0.5s ease;
     display: flex;
     justify-content: center;
-    margin-right: 20px;
-    /* Adjust the margin-right to create space between items */
 }
 
 .carousel-content {
@@ -73,58 +70,60 @@
     background-color: #717171;
 }
 
+
 .prev-arrow,
 .next-arrow {
     cursor: pointer;
     position: absolute;
     top: 50%;
-    width: auto;
     padding: 16px;
-    color: white;
     font-weight: bold;
     font-size: 18px;
     transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
     user-select: none;
-    background-color: rgba(0, 0, 0, 0.8);
     z-index: 1;
-    /* Ensure arrows are above carousel items */
+    color: white;
+    background-color: transparent;
+    border: none;
 }
+
 
 .prev-arrow {
-    cursor: pointer;
-    position: absolute;
-    top: 40%;
     left: 0;
     transform: translateY(-50%);
-    width: auto;
-    padding: 16px;
     margin-left: 10px;
-    /* Adjust as needed */
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-    background-color: rgba(0, 0, 0, 0.8);
+    color: black;
 }
 
+
 .next-arrow {
-    cursor: pointer;
-    position: absolute;
-    top: 40%;
     right: 0;
     transform: translateY(-50%);
-    width: auto;
-    padding: 16px;
     margin-right: 10px;
-    /* Adjust as needed */
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    transition: 0.6s ease;
-    border-radius: 3px 0 0 3px;
-    user-select: none;
-    background-color: rgba(0, 0, 0, 0.8);
+    color: black;
+}
+
+
+/* Media query for mobile screens */
+@media (max-width: 768px) {
+    .carousel-container {
+        padding: 30px 10px;
+        /* Adjust padding for smaller screens */
+    }
+
+    .carousel-heading {
+        font-size: 24px;
+        /* Decrease font size for smaller screens */
+    }
+
+    .carousel-content {
+        padding: 20px;
+        /* Adjust padding for smaller screens */
+    }
+
+    .carousel-content img {
+        width: 80px;
+        /* Decrease image size for smaller screens */
+        height: 80px;
+    }
 }
