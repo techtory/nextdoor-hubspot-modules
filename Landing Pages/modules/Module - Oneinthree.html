@@ -1,0 +1,71 @@
+{{ require_css(get_asset_url('Landing Pages/assets/css/main.css')) }}
+
+{% if template_css %}
+{{ require_css(get_asset_url(template_css)) }}
+{% endif %}
+
+
+<body>
+    <div class="oneinthree-container">
+        <div class="oneinthree-heading">{% inline_text field="headline" value="{{ module.headline }}" %}</div>
+        <div class="oneinthree-grid">
+            <div class="oneinthree-item">
+                {% if module.post_group.post_image.src %}
+                {% set sizeAttrs = 'width="{{ module.post_group.post_image.width|escape_attr }}" height="{{
+                module.post_group.post_image.height|escape_attr }}"' %}
+                {% if module.post_group.post_image.size_type == 'auto' %}
+                {% set sizeAttrs = 'width="{{ module.post_group.post_image.width|escape_attr }}" height="{{
+                module.post_group.post_image.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+                {% elif module.post_group.post_image.size_type == 'auto_custom_max' %}
+                {% set sizeAttrs = 'width="{{ module.post_group.post_image.max_width|escape_attr }}" height="{{
+                module.post_group.post_image.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+                {% endif %}
+                {% set loadingAttr = module.post_group.post_image.loading != 'disabled' ? 'loading="{{
+                module.post_group.post_image.loading|escape_attr }}"' : '' %}
+                <img src="{{ module.post_group.post_image.src|escape_url }}"
+                    alt="{{ module.post_group.post_image.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                {% endif %}
+                <div class="circle">1 in 3</div>
+                <h5>{% inline_text field="post_group.heading" value="{{ module.post_group.heading }}" %}</h5>
+            </div>
+            <div class="oneinthree-item">
+                {% if module.post_group_2.post_image.src %}
+                {% set sizeAttrs = 'width="{{ module.post_group_2.post_image.width|escape_attr }}" height="{{
+                module.post_group_2.post_image.height|escape_attr }}"' %}
+                {% if module.post_group_2.post_image.size_type == 'auto' %}
+                {% set sizeAttrs = 'width="{{ module.post_group_2.post_image.width|escape_attr }}" height="{{
+                module.post_group_2.post_image.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+                {% elif module.post_group_2.post_image.size_type == 'auto_custom_max' %}
+                {% set sizeAttrs = 'width="{{ module.post_group_2.post_image.max_width|escape_attr }}" height="{{
+                module.post_group_2.post_image.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+                {% endif %}
+                {% set loadingAttr = module.post_group_2.post_image.loading != 'disabled' ? 'loading="{{
+                module.post_group_2.post_image.loading|escape_attr }}"' : '' %}
+                <img src="{{ module.post_group_2.post_image.src|escape_url }}"
+                    alt="{{ module.post_group_2.post_image.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                {% endif %}
+                <div class="circle">1 in 3</div>
+                <h5>{% inline_text field="post_group_2.heading" value="{{ module.post_group_2.heading }}" %}</h5>
+            </div>
+            <div class="oneinthree-item">
+                {% if module.post_group_3.post_image.src %}
+                {% set sizeAttrs = 'width="{{ module.post_group_3.post_image.width|escape_attr }}" height="{{
+                module.post_group_3.post_image.height|escape_attr }}"' %}
+                {% if module.post_group_3.post_image.size_type == 'auto' %}
+                {% set sizeAttrs = 'width="{{ module.post_group_3.post_image.width|escape_attr }}" height="{{
+                module.post_group_3.post_image.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+                {% elif module.post_group_3.post_image.size_type == 'auto_custom_max' %}
+                {% set sizeAttrs = 'width="{{ module.post_group_3.post_image.max_width|escape_attr }}" height="{{
+                module.post_group_3.post_image.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+                {% endif %}
+                {% set loadingAttr = module.post_group_3.post_image.loading != 'disabled' ? 'loading="{{
+                module.post_group_3.post_image.loading|escape_attr }}"' : '' %}
+                <img src="{{ module.post_group_3.post_image.src|escape_url }}"
+                    alt="{{ module.post_group_3.post_image.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                {% endif %}
+                <div class="circle">1 in 3</div>
+                <h5>{% inline_text field="post_group_3.heading" value="{{ module.post_group_3.heading }}" %}</h5>
+            </div>
+        </div>
+    </div>
+</body>

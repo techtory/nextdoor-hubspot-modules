@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carousel</title>
+    <link rel="stylesheet" href="styles.css">
+    {{ require_css(get_asset_url('Landing Pages/assets/css/main.css')) }}
+    {{ require_js(get_asset_url('Landing Pages/assets/js/app.js')) }}
+
+    {% if template_css %}
+    {{ require_css(get_asset_url(template_css)) }}
+    {% endif %}
+</head>
+
+<body>
+    <div class="testimonial-carousel-container">
+        <div class="testimonial-heading">{% inline_text field="headline" value="{{ module.headline }}" %}</div>
+        <div class="testimonial-carousel">
+            <div class="carousel-item">
+                <div class="carousel-content">
+                    {% if module.carousel_item.author_image.src %}
+                    {% set sizeAttrs = 'width="{{ module.carousel_item.author_image.width|escape_attr }}" height="{{
+                    module.carousel_item.author_image.height|escape_attr }}"' %}
+                    {% if module.carousel_item.author_image.size_type == 'auto' %}
+                    {% set sizeAttrs = 'width="{{ module.carousel_item.author_image.width|escape_attr }}" height="{{
+                    module.carousel_item.author_image.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+                    {% elif module.carousel_item.author_image.size_type == 'auto_custom_max' %}
+                    {% set sizeAttrs = 'width="{{ module.carousel_item.author_image.max_width|escape_attr }}" height="{{
+                    module.carousel_item.author_image.max_height|escape_attr }}" style="max-width: 100%; height: auto;"'
+                    %}
+                    {% endif %}
+                    {% set loadingAttr = module.carousel_item.author_image.loading != 'disabled' ? 'loading="{{
+                    module.carousel_item.author_image.loading|escape_attr }}"' : '' %}
+                    <img src="{{ module.carousel_item.author_image.src|escape_url }}"
+                        alt="{{ module.carousel_item.author_image.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}
+                        class="carousel-image">
+                    {% endif %}
+                    <div class="carousel-text">
+                        <div class="carousel-review">
+                            {% inline_text field="carousel_item.author_review" value="{{
+                            module.carousel_item.author_review }}" %}
+                        </div>
+                        <h3 class="carousel-review-heading">{% inline_text field="carousel_item.author_name" value="{{
+                            module.carousel_item.author_name }}" %}</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-content">
+                    {% if module.carousel_item_2.author_image.src %}
+                    {% set sizeAttrs = 'width="{{ module.carousel_item_2.author_image.width|escape_attr }}" height="{{
+                    module.carousel_item_2.author_image.height|escape_attr }}"' %}
+                    {% if module.carousel_item_2.author_image.size_type == 'auto' %}
+                    {% set sizeAttrs = 'width="{{ module.carousel_item_2.author_image.width|escape_attr }}" height="{{
+                    module.carousel_item_2.author_image.height|escape_attr }}" style="max-width: 100%; height: auto;"'
+                    %}
+                    {% elif module.carousel_item_2.author_image.size_type == 'auto_custom_max' %}
+                    {% set sizeAttrs = 'width="{{ module.carousel_item_2.author_image.max_width|escape_attr }}"
+                    height="{{ module.carousel_item_2.author_image.max_height|escape_attr }}" style="max-width: 100%;
+                    height: auto;"' %}
+                    {% endif %}
+                    {% set loadingAttr = module.carousel_item_2.author_image.loading != 'disabled' ? 'loading="{{
+                    module.carousel_item_2.author_image.loading|escape_attr }}"' : '' %}
+                    <img src="{{ module.carousel_item_2.author_image.src|escape_url }}"
+                        alt="{{ module.carousel_item_2.author_image.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs
+                        }}>
+                    {% endif %}
+                    <div class="carousel-text">
+                        <div class="carousel-review">
+                            {% inline_text field="carousel_item.author_review" value="{{
+                            module.carousel_item.author_review }}" %}
+                        </div>
+                        <h3 class="carousel-review-heading">{% inline_text field="carousel_item.author_name" value="{{
+                            module.carousel_item.author_name }}" %}</h3>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more carousel items here as needed -->
+        </div>
+        <div class="nav-dots">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <!-- Add more dots as needed -->
+        </div>
+        <button class="prev-arrow">&#10094;</button>
+        <button class="next-arrow">&#10095;</button>
+    </div>
+</body>
+
+</html>

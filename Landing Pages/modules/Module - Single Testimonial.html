@@ -1,0 +1,40 @@
+{{ require_css(get_asset_url('Landing Pages/assets/css/main.css')) }}
+
+{% if template_css %}
+{{ require_css(get_asset_url(template_css)) }}
+{% endif %}
+
+
+<body>
+    <div class="single-boxcontainer">
+        <div class="single-heading">{% inline_text field="heading" value="{{ module.heading }}" %}</div>
+        <div class="single-reviewbox">
+            <div class="single-review-wrapper">
+                <div class="single-review">
+                    {% if module.author_box.author_image.src %}
+                    {% set sizeAttrs = 'width="{{ module.author_box.author_image.width|escape_attr }}" height="{{
+                    module.author_box.author_image.height|escape_attr }}"' %}
+                    {% if module.author_box.author_image.size_type == 'auto' %}
+                    {% set sizeAttrs = 'width="{{ module.author_box.author_image.width|escape_attr }}" height="{{
+                    module.author_box.author_image.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+                    {% elif module.author_box.author_image.size_type == 'auto_custom_max' %}
+                    {% set sizeAttrs = 'width="{{ module.author_box.author_image.max_width|escape_attr }}" height="{{
+                    module.author_box.author_image.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+                    {% endif %}
+                    {% set loadingAttr = module.author_box.author_image.loading != 'disabled' ? 'loading="{{
+                    module.author_box.author_image.loading|escape_attr }}"' : '' %}
+                    <img src="{{ module.author_box.author_image.src|escape_url }}"
+                        alt="{{ module.author_box.author_image.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                    {% endif %}
+                    <h3>{% inline_text field="author_box.author_name" value="{{ module.author_box.author_name }}" %}
+                    </h3>
+                    <h5>{% inline_text field="author_box.auth_profession" value="{{ module.author_box.auth_profession
+                        }}" %}</h5>
+                </div>
+                <div class="author-review">
+                    {% inline_text field="author_box.author_review" value="{{ module.author_box.author_review }}" %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
