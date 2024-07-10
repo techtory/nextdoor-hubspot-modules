@@ -1,0 +1,43 @@
+{{ require_css(get_asset_url('Landing Pages/assets/css/main.css')) }}
+
+{% if template_css %}
+{{ require_css(get_asset_url(template_css)) }}
+{% endif %}
+
+
+<body>
+    <div class="header2-container">
+        {% if module.logo.src %}
+        {% set sizeAttrs = 'width="{{ module.logo.width|escape_attr }}" height="{{ module.logo.height|escape_attr }}"'
+        %}
+        {% if module.logo.size_type == 'auto' %}
+        {% set sizeAttrs = 'width="{{ module.logo.width|escape_attr }}" height="{{ module.logo.height|escape_attr }}"
+        style="max-width: 100%; height: auto;"' %}
+        {% elif module.logo.size_type == 'auto_custom_max' %}
+        {% set sizeAttrs = 'width="{{ module.logo.max_width|escape_attr }}" height="{{
+        module.logo.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+        {% endif %}
+        {% set loadingAttr = module.logo.loading != 'disabled' ? 'loading="{{ module.logo.loading|escape_attr }}"' : ''
+        %}
+        <img src="{{ module.logo.src|escape_url }}" alt="{{ module.logo.alt|escape_attr }}" {{ loadingAttr }} {{
+            sizeAttrs }}>
+        {% endif %}
+
+        <div class="buttons">
+            <a href="#" class="button no-background">LOGIN</a>
+            <a href="#" class="button">SIGN UP</a>
+        </div>
+
+        <button class="hamburger" id="hamburgerButton">
+            <div></div>
+            <div class="middle"></div>
+            <div></div>
+        </button>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#" class="mobile-button no-background">LOGIN</a>
+        <a href="#" class="mobile-button">SIGN UP</a>
+    </div>
+
+</body>
