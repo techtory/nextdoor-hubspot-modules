@@ -6,6 +6,8 @@
     align-items: center;
     text-align: center;
     padding: 50px 200px;
+    position: relative;
+    box-sizing: border-box;
 }
 
 .carousel-heading {
@@ -16,12 +18,18 @@
     padding: 0;
 }
 
+.carousel-horizontal {
+    display: flex;
+    box-sizing: border-box;
+}
+
 .carousel {
     position: relative;
     width: 100%;
     overflow: hidden;
     padding: 20px;
     display: flex;
+    box-sizing: border-box;
 }
 
 .carousel-item {
@@ -29,25 +37,31 @@
     transition: transform 0.5s ease;
     display: flex;
     justify-content: center;
+    box-sizing: border-box;
 }
 
 .carousel-content {
     display: flex;
-    flex-direction: column;
     align-items: center;
     background-color: #fff;
     padding: 20px 60px;
-    text-align: center;
+    text-align: left;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
 }
 
 .carousel-content img {
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
+    width: 24%;
+    height: auto;
     object-fit: cover;
-    margin-bottom: 20px;
+    margin: 20px;
+}
+
+.carousel-content-text {
+    display: flex;
+    flex-direction: column;
+    padding: 16px 16px 16px 30px;
 }
 
 .nav-dots {
@@ -70,11 +84,10 @@
     background-color: #717171;
 }
 
-
 .prev-arrow,
 .next-arrow {
-    cursor: pointer;
     position: absolute;
+    cursor: pointer;
     top: 50%;
     padding: 16px;
     font-weight: bold;
@@ -82,48 +95,57 @@
     transition: 0.6s ease;
     user-select: none;
     z-index: 1;
-    color: white;
     background-color: transparent;
     border: none;
+    transform: translateY(-50%);
 }
-
 
 .prev-arrow {
     left: 0;
-    transform: translateY(-50%);
     margin-left: 10px;
     color: black;
 }
 
-
 .next-arrow {
     right: 0;
-    transform: translateY(-50%);
     margin-right: 10px;
     color: black;
 }
 
-
-/* Media query for mobile screens */
-@media (max-width: 768px) {
+@media (max-width: 480px) {
     .carousel-container {
-        padding: 30px 10px;
-        /* Adjust padding for smaller screens */
+        padding: 20px 10px;
     }
 
     .carousel-heading {
-        font-size: 24px;
-        /* Decrease font size for smaller screens */
+        font-size: 20px;
+    }
+
+    .carousel-horizontal {
+        flex-direction: column;
     }
 
     .carousel-content {
-        padding: 20px;
-        /* Adjust padding for smaller screens */
+        padding: 15px;
+        flex-direction: column;
+        text-align: center;
     }
 
     .carousel-content img {
-        width: 80px;
-        /* Decrease image size for smaller screens */
-        height: 80px;
+        width: 30%;
+        height: auto;
+        margin: 10px 0;
+    }
+
+    .carousel-content-text {
+        padding: 0px;
+    }
+
+    .prev-arrow {
+        left: -15px;
+    }
+
+    .next-arrow {
+        right: -15px;
     }
 }
